@@ -32,7 +32,7 @@ Tests are available in the [`tests`](./tests) folder, additional data available 
 | Mode | Description | Relaxation | Example System |
 |------|-------------|------------|----------------|
 | `atoms` | Atomic crystal generation | VASP | LaH₁₀ |
-| `molecules` | Molecular crystal generation | LAMMPS | CL-20 |
+| `molecules` | Molecular crystal generation | LAMMPS | CL-20+CO₂ |
 
 ## ⚙️ Configuration Setup
 
@@ -83,11 +83,11 @@ Calculation settings:
 ### VASP Mode (Atomic Crystals)
 
 #### Required Files:
-1. **📁 INCAR Files** → `inputs/vasp/`
+1. **📁 INCAR Files** → `EnvXGen/inputs/vasp/`
    - `incar_unfixed` - Standard relaxation
    - `incar_fixed` + `incar_unfixed` - Two-stage relaxation
 
-2. **📁 POTCAR Files** → `inputs/vasp/potcars/`
+2. **📁 POTCAR Files** → `EnvXGen/inputs/vasp/potcars/`
    - Download appropriate pseudopotentials for all atom types
 
 3. **📄 Initial Structure** → `POSCAR_init`
@@ -114,10 +114,10 @@ Placed structural elements:
 ### LAMMPS Mode (Molecular Crystals)
 
 #### Required Files:
-1. **📁 Force Field** → `inputs/lammps/`
+1. **📁 Force Field** → `EnvXGen/inputs/lammps/`
    - Example: `ffield.reax.lg`
 
-2. **📁 LAMMPS Input** → `inputs/lammps/lammps.in`
+2. **📁 LAMMPS Input** → `EnvXGen/inputs/lammps/lammps.in`
    - Relaxation settings and parameters
 
 3. **📄 Initial Structure** → `POSCAR_init`
@@ -151,16 +151,16 @@ your_project/
 ├── 📄 cfg.yaml                       # Main configuration
 ├── 📄 run_envxgen.sh                 # SLURM submission script  
 ├── 📄 POSCAR_init                    # Initial structure
-├── 📁 inputs/
-│   ├── 📁 vasp/
-│   │   ├── 📄 incar_unfixed         # VASP settings
-│   │   ├── 📄 incar_fixed           # Fixed-atom settings
-│   │   └── 📁 potcars/              # Pseudopotentials
-│   └── 📁 lammps/
-│       ├── 📄 lammps.in             # LAMMPS input
-│       └── 📄 ffield.reax.lg        # Force field
 └── 📄 log                           # Execution log
 └── 📁 EnvXGen/                      # Main folder with all scripts
+    ├── 📁 inputs/
+    ├── 📁 vasp/
+    │   ├── 📄 incar_unfixed         # VASP settings
+    │   ├── 📄 incar_fixed           # Fixed-atom settings
+    │   └── 📁 potcars/              # Pseudopotentials
+    └── 📁 lammps/
+        ├── 📄 lammps.in             # LAMMPS input
+        └── 📄 ffield.reax.lg        # Force field
 ```
 
 ## 🛠️ Troubleshooting
