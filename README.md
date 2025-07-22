@@ -249,7 +249,7 @@ After generation completes, the `Postprocessing.ipynb` notebook will be automati
 - Automatic search for energetically favorable structures in different clusters
 
 
-### Citation and Code Attribution
+## Citation and Code Attribution
 
 This project uses and adapts code from the following open-source projects:
 
