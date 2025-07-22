@@ -248,4 +248,28 @@ After generation completes, the `Postprocessing.ipynb` notebook will be automati
 - Energy characteristics analysis and comparison
 - Automatic search for energetically favorable structures in different clusters
 
+
+### Citation and Code Attribution
+
+This project uses and adapts code from the following open-source projects:
+
+#### ASE – Atomic Simulation Environment
+Portions of this code are adapted from ASE:
+https://gitlab.com/ase/ase
+Licensed under GPLv3.
+Citation: A. Hjorth Larsen et al., J. Phys.: Condens. Matter 29 273002 (2017)
+
+#### ALIGNN – Atomistic Line Graph Neural Network
+Portions of this code are adapted from ALIGNN:
+https://github.com/usnistgov/alignn
+Licensed under Apache 2.0.
+Citation: Choudhary & DeCost (2021), npj Comput Mater 7, 185
+DOI: https://doi.org/10.1038/s41524-021-00650-1
+
+
+## Contact Us
+Email: propad@phystech.edu
+Telegram: @yanapropad
+
+
 **Ready to generate your crystal structures?** Start with the basic configuration and gradually customize for your specific research needs!
