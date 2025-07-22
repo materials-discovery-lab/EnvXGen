@@ -83,12 +83,14 @@ Calculation settings:
 ### VASP Mode (Atomic Crystals)
 
 #### Required Files:
-1. **📁 INCAR Files** → `EnvXGen/inputs/vasp/`
-   - `incar_unfixed` - Standard relaxation
-   - `incar_fixed` + `incar_unfixed` - Two-stage relaxation
+1. **📁 INCAR Files** → Multi-stage relaxation setup
+   - `EnvXGen/inputs/vasp/incars_unfixed/INCAR_1, INCAR_2, ...` - Standard relaxation stages
+   - `EnvXGen/inputs/vasp/incars_fixed/INCAR_1, INCAR_2, ...` - Fixed-atom relaxation stages
+   - Number of files = `VASP steps` parameter in config
 
 2. **📁 POTCAR Files** → `EnvXGen/inputs/vasp/potcars/`
-   - Download appropriate pseudopotentials for all atom types
+   - `POTCAR_La`, `POTCAR_H`, etc. - Individual pseudopotentials for each element
+   - Download appropriate POTCAR for all atom types in your system
 
 3. **📄 Initial Structure** → `POSCAR_init`
    - VASP format crystal structure
@@ -114,11 +116,11 @@ Placed structural elements:
 ### LAMMPS Mode (Molecular Crystals)
 
 #### Required Files:
-1. **📁 Force Field** → `EnvXGen/inputs/lammps/`
-   - Example: `ffield.reax.lg`
+1. **📁 Force Field** → `EnvXGen/inputs/lammps/ffield.reax.lg`
+   - ReaxFF or other compatible force field file
 
 2. **📁 LAMMPS Input** → `EnvXGen/inputs/lammps/lammps.in`
-   - Relaxation settings and parameters
+   - Relaxation settings and simulation parameters
 
 3. **📄 Initial Structure** → `POSCAR_init`
    - Starting crystal structure
