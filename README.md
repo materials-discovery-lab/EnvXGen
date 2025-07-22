@@ -17,6 +17,8 @@ Furthermore, EnvXGen includes tools to assess the **diversity of generated struc
 
 Tests are available in the [`tests`](./tests) folder, additional data available upon request.
 
+![EnvXGen](EnvXGen/images/EnvXGen_generation.png)
+
 
 ## 🚀 Quick Start
 
