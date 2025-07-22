@@ -1,1 +1,2 @@
-# RSGFE
+# EnvXGen
+## random structure generator
