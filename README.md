@@ -211,4 +211,41 @@ Molecules from file:
 
 ---
 
+## Results Structure
+
+After successful completion, you'll find:
+```
+📁 results/
+├──📁 result_vasp_fixed/          # (and/or result_vasp_unfixed, result_lammps depending on relaxation type)
+│   ├──🗄️ POSCARS_*crystal_system*_vasp_fixed.pkl              # Generated structures database
+│   ├──🗄️ POSCARS_*crystal_system*_vasp_fixed_relaxed.pkl      # Relaxed structures database  
+│   ├──🗄️ relaxation_results_all.pkl                # Complete relaxation results
+│   ├──🗄️ result_batch_0.pkl                        # Individual batch results
+│   ├──🗄️ result_batch_1.pkl
+│   └── ...
+├──🗄️ relaxation_results_summarized.pkl         # Summary with all structure info (sorted by energy)
+└──💻 Postprocessing.ipynb                      # Analysis notebook
+```
+
+## Postprocessing and Analysis
+
+After generation completes, the `Postprocessing.ipynb` notebook will be automatically copied to your results directory. This powerful notebook provides comprehensive analysis tools:
+
+### Available Analysis Methods
+
+**Structure Descriptors:**
+- **RDF** (Radial Distribution Function) - analyzes atomic pair correlations
+- **ALIGNN** - advanced descriptors using graph neural networks
+
+**Dimensionality Reduction:**
+- **PCA** (Principal Component Analysis) - linear dimensionality reduction
+- **UMAP** - non-linear manifold learning for better cluster visualization
+
+**Analysis Capabilities:**
+- Structure clustering with automatic optimal cluster number detection
+- Cosine similarity calculation between generated and original structures
+- 2D/3D visualization of structure projections (before and after relaxation)
+- Energy characteristics analysis and comparison
+- Automatic search for energetically favorable structures in different clusters
+
 **Ready to generate your crystal structures?** Start with the basic configuration and gradually customize for your specific research needs!
