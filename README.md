@@ -1,2 +1,1 @@
-# EnvXGen
-## random structure generator
+![EnvXGen](EnvXGen/images/EnvXGen_logo.png)
