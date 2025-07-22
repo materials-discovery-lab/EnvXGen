@@ -160,6 +160,7 @@ your_project/
 │       ├── 📄 lammps.in             # LAMMPS input
 │       └── 📄 ffield.reax.lg        # Force field
 └── 📄 log                           # Execution log
+└── 📁 EnvXGen/                      # Main folder with all scripts
 ```
 
 ## 🛠️ Troubleshooting
