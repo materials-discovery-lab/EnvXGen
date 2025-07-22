@@ -148,19 +148,28 @@ sbatch run_envxgen.sh
 
 ```
 your_project/
-├── 📄 cfg.yaml                       # Main configuration
-├── 📄 run_envxgen.sh                 # SLURM submission script  
-├── 📄 POSCAR_init                    # Initial structure
-└── 📄 log                           # Execution log
-└── 📁 EnvXGen/                      # Main folder with all scripts
-    ├── 📁 inputs/
-    ├── 📁 vasp/
-    │   ├── 📄 incar_unfixed         # VASP settings
-    │   ├── 📄 incar_fixed           # Fixed-atom settings
-    │   └── 📁 potcars/              # Pseudopotentials
-    └── 📁 lammps/
-        ├── 📄 lammps.in             # LAMMPS input
-        └── 📄 ffield.reax.lg        # Force field
+├── 📄 cfg.yaml                              # Main configuration
+├── 📄 run_envxgen.sh                        # SLURM submission script  
+├── 📄 POSCAR_init                           # Initial structure
+├── 📁 EnvXGen/                              # Main folder with all scripts
+│   └── 📁 inputs/
+│       ├── 📁 vasp/
+│       │   ├── 📁 incars_fixed/             # Fixed-atom relaxation stages
+│       │   │   ├── 📄 INCAR_1               # Stage 1 settings
+│       │   │   ├── 📄 INCAR_2               # Stage 2 settings
+│       │   │   └── 📄 INCAR_n               # Stage n settings
+│       │   ├── 📁 incars_unfixed/           # Standard relaxation stages  
+│       │   │   ├── 📄 INCAR_1               # Stage 1 settings
+│       │   │   ├── 📄 INCAR_2               # Stage 2 settings
+│       │   │   └── 📄 INCAR_n               # Stage n settings
+│       │   └── 📁 potcars/                  # Pseudopotentials
+│       │       ├── 📄 POTCAR_La             # Lanthanum POTCAR
+│       │       ├── 📄 POTCAR_H              # Hydrogen POTCAR
+│       │       └── 📄 POTCAR_X              # Other elements
+│       └── 📁 lammps/
+│           ├── 📄 lammps.in                 # LAMMPS input
+│           └── 📄 ffield.reax.lg            # ReaxFF force field
+└── 📄 log                                   # Execution log
 ```
 
 ## 🛠️ Troubleshooting
