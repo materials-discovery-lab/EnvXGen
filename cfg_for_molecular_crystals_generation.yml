@@ -1,0 +1,106 @@
+---
+### Generation configurations ###
+# Example for generation molecular crystals
+# Rename this file to "cfg.yaml" for use
+
+Crystal system: CL_20
+
+Mode: molecules
+Relaxation mode: lammps
+Force-field filename: ffield.reax.lg
+
+# ATTENTION:
+# You need to specify relaxation settings by redacting inputs/lammps/lammps.in
+# You also need to download a file with interatomic potentials to the inputs/lammps/
+
+Number of bins along each lattice vector:
+    n_bins_x: 25
+    n_bins_y: 25
+    n_bins_z: 25
+
+### Calculation configurations
+Number of generated structures: 8
+Number of parallel calculations: 4
+
+Calculation settings:
+    SBATCH --partition: cpu
+    SBATCH --nodes: 1
+    SBATCH --ntasks: 8
+    SBATCH --time: 00:20:00
+    #SBATCH --mem-per-cpu: 1G
+    SBATCH --exclude: cnode[21,24-26,29-31,35,37]
+
+---
+### Environment configurations
+
+Initial Environment:
+
+    Filename: POSCAR_init
+    Format: vasp
+
+    Atom types from molecules:
+        default values: Alvarez
+        C:
+            chemical symbol: C
+            Van der Waals radius: default
+            # you can set custom values of covalent radius
+        H:
+            chemical symbol: H
+            Van der Waals radius: default
+            # you can set custom values of covalent radius
+        O: 
+            chemical symbol: O
+            Van der Waals radius: default
+            # you can set custom values of covalent radius
+        N:
+            chemical symbol: N
+            Van der Waals radius: default
+            # you can set custom values of covalent radius
+
+
+Placed structural elements:
+    # There are several options to specify the molecules that need to be added to the initial cell -
+    # from a file or from a database
+
+    Molecules from databases:
+        H2O:
+            name: H2O
+            ase_name: H2O
+            # Or you can download structure from pubcem by id:
+            # pubchem_cid: 2244
+            number of molecules: 1
+            default values: Alvarez
+            covalent radii:
+                H: default
+                O: default
+                # you can set custom values of covalent radius
+            Van der Waals radii:
+                H: default
+                O: default
+                # you can set custom values of covalent radius
+    
+    #Molecules from file:
+    #     Mo3S4:
+    #         name: Mo3S4
+    #         Filename: Mo3S4.vasp
+    #         Format: vasp
+    #         number of molecules: 2
+    #         default values: Alvarez
+    #         covalent radii:
+    #             Mo: default
+    #             S: default
+    #         Van der Waals radii:
+    #             Mo: default
+    #             S: default
+    #     N2O:
+    #         name: N2O
+    #         Filename: Mo3S4.vasp
+    #         Format: vasp
+    #         number of molecules: 3
+    #         default values: Alvarez
+    #         covalent radii:
+    #             N: default
+    #             O: default
+    #         Van der Waals radii:
+    #             N: default
+    #             O: default
