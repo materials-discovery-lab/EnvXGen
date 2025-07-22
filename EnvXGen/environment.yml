@@ -1,0 +1,22 @@
+name: envxgen_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - matminer
+  - pymatgen
+  - matplotlib
+  - numpy
+  - scikit-learn
+  - ase
+  - tqdm
+  - umap-learn
+  - pydantic-settings
+  - pytorch
+  - dgl
+  - alignn
+  - requests
+  - jarvis-tools
+  - pip

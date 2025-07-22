@@ -1,0 +1,81 @@
+##########################################################
+# Simple cell relaxation CUBIC CELL
+##########################################################
+
+units           real
+atom_style 	charge
+
+
+variable	temperature equal 293.0
+variable	temperature_x2 equal ${temperature}*2
+variable	temperature_injec equal 1400
+variable	pressure equal 1.0
+
+read_data coo.data                                  
+                                       
+pair_style	reax/c NULL safezone 3.0 lgvdw yes
+pair_coeff * *  ffield.reax.lg C H N O       
+mass 1 12.011
+mass 2 1.008
+mass 3 14.007
+mass 4 15.999
+fix             100 all qeq/reax 1 0.0 10.0 1.0e-6 reax/c
+
+neigh_modify 	every 1 delay 0 check yes  
+
+thermo 100
+thermo_style custom step temp etotal pxx pyy pzz pxy pxz pyz press vol
+
+#----------- geometry optimization----------------------
+
+min_style 	cg                                          
+minimize        1.0e-8 1.0e-8 15000 30000       
+
+#------------thermalization and barostat------
+timestep	0.05
+velocity all create ${temperature_x2} 12345
+fix	3 all npt temp ${temperature} 5.0 10.0 tri ${pressure} ${pressure} 100.0
+dump myDump all atom 100 out_thermo.atom
+run 10000
+
+#write_dump all custom out_nve_thermo.xyz id type xu yu zu modify sort 2
+#dump_0            1 all xyz 10 out_thermo.xyz                      # Record animation every 50 steps  
+#dump_0_modify     1 append yes
+
+#----------- geometry optimization----------------------
+
+reset_timestep 0
+min_style cg   
+
+dump 		1 all xyz 10000 out.xyz                      # Record animation every 50 steps  
+dump_modify	1 append yes  
+
+minimize    1.0e-8 1.0e-8 15000 30000   
+
+##########################################################
+# Writing Output Enthalpy and Cell Parameters.
+##########################################################
+variable v equal vol
+print "volume"
+print "$v"
+variable e equal etotal
+print "energy"
+print "$e"
+variable a equal cellalpha
+variable b equal cellbeta
+variable o equal cellgamma
+variable g equal cella
+variable h equal cellb
+variable y equal cellc
+print "Lattice parameters"
+variable a1 equal $g
+print "${a1} 0.00  0.00"
+variable b1 equal $h*cos($o*PI/180)
+variable b2 equal $h*sin($o*PI/180)
+print "${b1} ${b2}  0.00"
+variable c1 equal $y*cos($b*PI/180)
+variable c2 equal $y*(cos($a*PI/180)-cos($b*PI/180)*cos($o*PI/180))/sin($o*PI/180)
+variable c3 equal $y*sqrt(1+2*cos($a*PI/180)*cos($b*PI/180)*cos($o*PI/180)-cos($a*PI/180)^2-cos($b*PI/180)^2-cos($o*PI/180)^2)/sin($o*PI/180)
+print "${c1}  ${c2}  ${c3}"
+#---------------------------------------
+#

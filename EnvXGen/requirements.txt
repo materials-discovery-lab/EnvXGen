@@ -1,0 +1,16 @@
+pandas
+matminer
+pymatgen
+matplotlib
+numpy
+scikit-learn
+ase
+tqdm
+umap-learn
+pydantic-settings
+torch
+dgl
+alignn
+requests
+jarvis-tools
+torchdata
