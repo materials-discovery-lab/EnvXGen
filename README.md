@@ -231,7 +231,7 @@ After successful completion, you'll find:
 
 ## Postprocessing and Analysis
 
-After generation completes, the `Postprocessing.ipynb` notebook will be automatically copied to your results directory. This powerful notebook provides comprehensive analysis tools:
+After generation completes, the `Postprocessing.ipynb` notebook will be automatically copied to your results directory. This notebook provides comprehensive analysis tools and also available in the [`EnvXGen`](./EnvXGen) folder:
 
 ### Available Analysis Methods
 
